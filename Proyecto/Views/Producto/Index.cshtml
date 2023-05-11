@@ -1,0 +1,49 @@
+﻿@model IEnumerable<Producto>
+
+<h1>Productos</h1>
+
+<p>
+    <a asp-action="Crear" class="btn btn-success">Crear nuevo producto</a>
+</p>
+
+<table>
+    <thead>
+
+        <tr>
+            <th>ID_Producto</th>
+            <th>Nombre</th>
+            <th>Descripcion</th>
+            <th>Cantidad</th>
+            <th>Precio</th>
+
+        </tr>
+
+    </thead>
+
+    @foreach (var producto in Model)// itera los datos en la base de datos
+    {
+
+        <tr>
+            <td>
+                @producto.ID_Producto
+        </td>
+        <td>@producto.Nombre</td>
+        <td>@producto.Descripcion</td>
+        <td>@producto.Cantidad</td>
+        <td>@producto.Precio.ToString("C")</td>
+        <td>
+            <a asp-action="Detalle" class="btn btn-info" asp-route-id="@producto.ID_Producto"> Detalle</a>
+            <a asp-action="Editar" class="btn btn-warning" asp-route-id="@producto.ID_Producto">  Editar</a>
+            <a asp-action="Eliminar" class="btn btn-danger" asp-route-id="@producto.ID_Producto"> Eliminar</a>
+
+
+        </td>
+
+
+
+
+    </tr>
+
+}
+
+</table>
